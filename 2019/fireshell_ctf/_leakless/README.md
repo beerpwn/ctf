@@ -36,7 +36,7 @@ RelRO                         : Partial
 <br>
 
 With that in mind we can start figure out our exploit.
-Use the buffer overflow to override the ret addr and get control on eip, use ret2libc <a href=''>< to leak some GOT addr and return into main func.
+Use the buffer overflow to override the ret addr and get control on eip, use <a href=''>ret2libc</a> to leak some GOT addr and return into main func.
 The leak payload will be like this <pre>[A*off][puts_plt][main_addr][some_GOT_addr]</pre>
 After that we can serch for libc version. I used this site <a href='https://libc.blukat.me'>https://libc.blukat.me</a> to evaluate libc version.
 <br>
