@@ -3,6 +3,8 @@
 # BSidesSF 2019 CTF
 ## Mixer crypto-web level 150pti
 
+![alt text](screen/chal_desc.png)
+
 Let's start login with some creds.
 
 ![alt text](screen/login.png)
