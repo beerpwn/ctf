@@ -1,7 +1,7 @@
 ### writeup by p4w @ beerpwn sec-team
 
 # BSidesSF 2019 CTF
-## Mixer crypto-web level 150
+## Mixer crypto-web level 150pti
 
 Let's start login with some creds.
 
@@ -19,9 +19,13 @@ Let's start modify user cookie at random position by just flipping one byte, in 
 
 ![alt text](screen/flip_one_byte.png)
 
-As we can see the guess about AES ECB was correct, by flipping one byte we change the encrypte payload that now is no more a valid json.
-Also we can see that the cookie is AES(json) like so:
-## {"first_name":"paw":,"last_name":"paww","is_admin":0}
+As we can see the guess about AES ECB was probably correct, by flipping one byte we change the encrypted payload that now is no more a valid json.
+Also we can see that the cookie is something like AES(json), where the json payload is:
+### {"first_name":"paw":,"last_name":"paww","is_admin":0}
 
-To get the flag we now need to modify the json payload in something like:
-## {"first_name":"paw":,"last_name":"paww","is_admin":1}
+To get the flag we now need to modify the json payload to be something like this:
+### {"first_name":"paw":,"last_name":"paww","is_admin":1}
+
+First approach that i try was to just fuzz on the byte witch is responsible to encode the "0", but that doesn't work propelly.
+
+So i start thinking a little bit ddeper on this and it comes in my mind that if i can control an entire block of the encoded cookie with something that will be equivalent to 1 and then i can reply the entire block between the <pre>"is_admin":</pre> and the <pre>0</pre>
