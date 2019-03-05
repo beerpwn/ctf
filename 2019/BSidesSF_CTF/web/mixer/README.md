@@ -14,8 +14,9 @@ Just use this cookie and see what we get back
 
 So, my guess is:
 the cookie is encrypted with AES ECB mode, and if it is that's BAD!!! ;)
-Since i'm not a crypt guy i'll demand to information about AES and ECB mode encryption to google.
-Here you can just give an idea about how that works <link href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">
+In order to understand well the nex part we probably need to know some basic concept on about ECB mode works.
+Since i'm not a crypto guy i'll demand to information about AES and ECB mode encryption to google.
+Here you can just get an idea on how that works <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Block cipher</a>
 
 Let's start modify user cookie at random position by just flipping one byte, in order to verify if the assumption is correct.
 
