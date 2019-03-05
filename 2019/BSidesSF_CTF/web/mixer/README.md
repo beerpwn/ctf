@@ -47,7 +47,7 @@ the lenght of <pre>{"first_name":"A</pre>
 it's 16 byte and this will corresponds to the first 16 byte block of the cookie (32 character since is hex encoded), then the next 16 byte of the cookie we will have our payload <b>1.00000000000000</b> that we want to reply.
 Let's copy that part and paste in the right position of the cookie.
 
-![alt text](screen/1.00000000000000_block.png)
+![alt text](screen/1_00000000000000.png)
 
 To found the righ position notice that lenght of <pre> {"first_name":"A1.00000000000000","last_name":"paww","is_admin": </pre>
 is 64 byte then after that we need to paste our payload.
