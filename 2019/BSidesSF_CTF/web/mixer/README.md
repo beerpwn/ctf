@@ -15,7 +15,7 @@ Just use this cookie and see what we get back
 So, my guess is:
 the cookie is encrypted with AES ECB mode, and if it is that's BAD!!! ;)
 In order to understand well the nex part you probably need to know some basics about ECB mode.
-Since i'm not a crypto guy i'll demand to information about AES and ECB mode encryption to google.
+Since I'm not a crypto guy I suggest you to google for some good material about AES and ECB mode encryption to google.
 Here you can just get an idea on how that works <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Block cipher.</a>
 
 Let's start modify user cookie at random position by just flipping one byte, in order to verify if the assumption is correct.
@@ -29,7 +29,7 @@ Also we can see that the cookie is something like AES(json), where the json payl
 To get the flag we now need to modify the json payload to be something like this:
 ### {"first_name":"paw","last_name":"paww","is_admin":1}
 
-First approach that i try was to just fuzz on the byte witch is responsible to encode the "0", but that doesn't work propelly. Also as the challnge say we need to have an exact match with 1.
+First approach that i try was to just fuzz on the byte witch is responsible to encode the "0", but that doesn't work properly. Also as the challnge say we need to have an exact match with 1.
 
 ![alt text](screen/chall_info.png)
 
@@ -57,4 +57,5 @@ is 64 byte then after that we need to paste our payload.
 And here we get our flag :)
 ![alt text](screen/get_flag.png)
 
-I also write a simple python script to automate the exploit check it here <a href="https://github.com/beerpwn/ctf/blob/master/2019/BSidesSF_CTF/web/mixer/aes_block_reply_attack.py">exploit</a>.
+I also write a simple python script to automate the exploit.
+Check it here <a href="https://github.com/beerpwn/ctf/blob/master/2019/BSidesSF_CTF/web/mixer/aes_block_reply_attack.py">exploit</a>.
