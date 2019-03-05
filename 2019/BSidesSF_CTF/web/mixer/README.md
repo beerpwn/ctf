@@ -60,4 +60,4 @@ And here we get our flag :)
 ![alt text](screen/get_flag.png)
 
 I also write a simple python script to automate the exploit.
-Check it here <a href="https://github.com/beerpwn/ctf/blob/master/2019/BSidesSF_CTF/web/mixer/aes_block_reply_attack.py">exploit</a>.
+Check it <a href="https://github.com/beerpwn/ctf/blob/master/2019/BSidesSF_CTF/web/mixer/aes_block_reply_attack.py">here</a>.
