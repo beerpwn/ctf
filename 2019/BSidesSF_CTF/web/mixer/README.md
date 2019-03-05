@@ -14,7 +14,7 @@ Just use this cookie and see what we get back
 
 So, my guess is:
 the cookie is encrypted with AES ECB mode, and if it is that's BAD!!! ;)
-In order to understand well the nex part you probably need to know some basic concept on about ECB mode works.
+In order to understand well the nex part you probably need to know some basics about ECB mode.
 Since i'm not a crypto guy i'll demand to information about AES and ECB mode encryption to google.
 Here you can just get an idea on how that works <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Block cipher.</a>
 
@@ -29,7 +29,9 @@ Also we can see that the cookie is something like AES(json), where the json payl
 To get the flag we now need to modify the json payload to be something like this:
 ### {"first_name":"paw","last_name":"paww","is_admin":1}
 
-First approach that i try was to just fuzz on the byte witch is responsible to encode the "0", but that doesn't work propelly.
+First approach that i try was to just fuzz on the byte witch is responsible to encode the "0", but that doesn't work propelly. Also as the challnge say we need to have an exact match with 1.
+
+![alt text](screen/chall_info.png)
 
 So i start thinking a little bit ddeper on this and it comes in my mind that if i can control an entire block of the encoded cookie with something that will be equivalent to 1, then i can reply the entire block between the <pre>"is_admin":</pre> and the <pre>0</pre> part.
 So what about 1.00000000000000 ?
