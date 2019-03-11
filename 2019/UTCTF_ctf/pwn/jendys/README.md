@@ -5,6 +5,8 @@
 
 <a href="https://exploitnetworking.com/en/security-en/jendys">Here</a> there is the original writeup. For test the exploit, setup an enviroment with the libc-2.23.so, for example an Ubuntu 16.04. Download the repository in enviroment:
 
+docker run --name ubuntu1604 ubuntu:xenial
+
 <pre> git clone https://github.com/beerpwn/ctf.git </pre>
 
 Move in directory:
