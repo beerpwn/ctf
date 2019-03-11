@@ -10,7 +10,7 @@ pwnable: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically l
 </pre>
 <pre>
 gef➤  checksec
-[+] checksec for '/home/paw/Documenti/beerpwn_git/ctf/2019/UTCTF_ctf/pwn/baby_echo/pwnable'
+[+] checksec for 'pwnable'
 Canary                        : No
 NX                            : Yes
 PIE                           : No
