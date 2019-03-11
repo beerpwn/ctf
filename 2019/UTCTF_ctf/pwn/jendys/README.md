@@ -5,12 +5,12 @@
 
 <a href="https://exploitnetworking.com/en/security-en/jendys">Here</a> there is the original writeup. For test the exploit, setup an enviroment with the libc-2.23.so, for example an Ubuntu 16.04. Download the repository in enviroment:
 
-### git clone https://github.com/beerpwn/ctf.git
+<pre> git clone https://github.com/beerpwn/ctf.git </pre>
 
 Move in directory:
 
-### cd ctf/2019/UTCTF_ctf/pwn/jendys
+<pre> cd ctf/2019/UTCTF_ctf/pwn/jendys </pre>
 
 And run the <a href="https://github.com/beerpwn/ctf/blob/master/2019/UTCTF_ctf/pwn/jendys/mixer/exploit.py">exploit.py</a>:
 
-### python exploit.py
+<pre> python exploit.py </pre>
