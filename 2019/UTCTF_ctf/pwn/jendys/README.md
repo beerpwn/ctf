@@ -11,6 +11,6 @@ Move in directory:
 
 <pre> cd ctf/2019/UTCTF_ctf/pwn/jendys </pre>
 
-And run the <a href="https://github.com/beerpwn/ctf/blob/master/2019/UTCTF_ctf/pwn/jendys/mixer/exploit.py">exploit.py</a>:
+And run the <a href="https://github.com/beerpwn/ctf/blob/master/2019/UTCTF_ctf/pwn/jendys/exploit.py">exploit.py</a>:
 
 <pre> python exploit.py </pre>
