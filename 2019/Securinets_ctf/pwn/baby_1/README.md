@@ -27,6 +27,6 @@ With this in mind we can buld the exploit that:
 1) leak address from GOT
 2) restart execution
 3) evaluate libc_offset
-4) own the executable by smash the stack and re2lib on system()
+4) own the executable by smash the stack and ret2libc on system()
 
 you can check the full <a href="./exploit.py">exploit</a> here.
