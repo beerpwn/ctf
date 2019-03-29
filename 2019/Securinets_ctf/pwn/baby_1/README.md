@@ -15,8 +15,8 @@ We need to leak some address, and we want to do that by using the write() functi
 This because the write function expect 3 params (in 64-bit mode the arguments are passed via registers).
 For the first 2 params we have two good and easy gadgets that allow us to set rdi and rsi registers.
 
-```0x00000000004006c3 # pop rdi ; ret```
-```0x00000000004006c1 # pop rsi ; pop r15 ; ret```
+```0x00000000004006c3 # pop rdi ; ret
+0x00000000004006c1 # pop rsi ; pop r15 ; ret```
 
 For the rdx register... well we need to use some more creative gadgets:
 
