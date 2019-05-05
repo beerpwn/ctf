@@ -43,7 +43,7 @@ What i want to do for this was make a leak, restart execution and then jump to l
 ###The problem
 As we can see from the dump there are NOT simple gadget like 'pop rdi' to control registers.
 ```
-ROPgadget --binary ./weak --depth 50 |grep pop|grep ret
+$ ROPgadget --binary ./weak --depth 40 |grep pop|grep ret
 0x0000000000400519 : add al, 0x20 ; add byte ptr [rcx], al ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 0x0000000000400510 : add byte ptr [rax + 0x39], cl ; fdiv dword ptr [rdx - 0x1e] ; mov byte ptr [rip + 0x2004fb], 1 ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 0x0000000000400509 : add byte ptr [rax - 0x75], cl ; add eax, 0x20050f ; cmp rax, rbx ; jb 0x400512 ; mov byte ptr [rip + 0x2004fb], 1 ; add rsp, 8 ; pop rbx ; pop rbp ; ret
