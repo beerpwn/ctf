@@ -35,11 +35,12 @@ Fortify                       : No
 RelRO                         : No
 ```
 As we can see the binary has no protection at all. So potentially we can also inject a shellcode into the stack and jump on it, but instead of this i managed to do full ROP.
+What i want to do to solve this challenge was make a memory-leak, restart execution and then ret2libc address to gain a shell.
 So what i did now was start to find some gadgets.
 ```
-$ ROPgadget --binary ./weak --depth 50
+$ ROPgadget --binary ./weak --depth 40
 ```
-What i want to do for this was make a leak, restart execution and then jump to libc address to gain a shell.
+
 ### The problem
 As we can see from the dump there are NOT simple gadget like 'pop rdi' to control registers.
 ```
