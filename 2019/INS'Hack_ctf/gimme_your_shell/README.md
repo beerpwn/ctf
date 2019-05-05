@@ -90,6 +90,23 @@ and this is the second one:
 ```
 With the first one we can basically get control over ebx, rbp, r12, r13, r14, r15 by writing double words into the stack at the correct offsett.<br>
 Then we can use the second gadget that end with a call instruction.<br>
-Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some got address and the call puts@GOT.
-The second gadgets make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget.
+Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some got address and then call puts@GOT.
+The second gadget make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget so when we land on the second gadget the contents of r13 will be placed into rdi.
 I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and i can do that with the first gadget.
+One more little thing we need to make all work, look closely at the second gadgets
+
+![alt text](images/second_gdt.png)
+
+after the call instruction we have three instruction
+```
+000000000040062d         add        rbx, 0x1
+0000000000400631         cmp        rbx, rbp
+0000000000400634         jne        loc_400620
+```
+basically it's a loop, and to exit from that and go over we need to make rbx=rbp, then with the first gadget we need to set ebx=0 and rbp=1.
+<br>
+That was the hard part the rest is much ez now.
+<br>
+Just restart execution to repeat the buffer-overflow again and this time (after libc version evaluation) we can overwrite the ret address with one-gadget to gain the shell.
+<br>
+You can check the full <a href="./x.py">exploit</a> here.
