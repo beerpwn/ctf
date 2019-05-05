@@ -91,8 +91,8 @@ and this is the second one:
 ```
 With the first one we can basically get control over ebx, rbp, r12, r13, r14, r15 by writing double words into the stack at the correct offsett.<br>
 Then we can use the second gadget that end with a call instruction.<br>
-Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some got address and then call puts@GOT.
-The second gadget make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget so when we land on the second gadget the contents of r13 will be placed into rdi.
+Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some GOT address and then call puts@GOT.
+The second gadget make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget in this way, when we land on the second gadget, the contents of r13 will be placed into rdi.
 I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and i can do that with the first gadget.
 We just need one more little thing to make all work, look closely at the second gadgets
 
@@ -106,7 +106,7 @@ after the call instruction we have three instruction
 ```
 basically it's a loop, and to exit from that and go over we need to make rbx=rbp, then with the first gadget we need to set ebx=0 and rbp=1.
 <br>
-Now that we are able to leak we just need restart execution to repeat the buffer-overflow again and this time (after libc version evaluation) we can overwrite the ret address with one-gadget to gain the shell.
+Now that we are able to leak we just need restart execution to repeat the buffer-overflow again and this time (after <a href="https://libc.blukat.me/">libc version evaluation</a>) we can overwrite the ret address with one-gadget to gain the shell.
 <br>
 Getting the flag :)
 
