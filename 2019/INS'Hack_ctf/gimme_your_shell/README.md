@@ -109,6 +109,7 @@ basically it's a loop, and to exit from that and go over we need to make rbx=rbp
 Now that we are able to leak we just need restart execution to repeat the buffer-overflow again and this time (after libc version evaluation) we can overwrite the ret address with one-gadget to gain the shell.
 <br>
 Getting the flag :)
+
 ![alt text](images/flag.png)
 
 You can check the full <a href="./x.py">exploit</a> here.
