@@ -24,7 +24,8 @@ Let's verify this:
 
 ![alt text](images/segfault.png)
 
-Segfault!
+Segfault! After 24 bytes we can overwrite the saved ret address.
+<br>
 Let's also check for the protection on the binary
 ```
 $ checksec ./weak
@@ -93,7 +94,7 @@ Then we can use the second gadget that end with a call instruction.<br>
 Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some got address and then call puts@GOT.
 The second gadget make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget so when we land on the second gadget the contents of r13 will be placed into rdi.
 I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and i can do that with the first gadget.
-One more little thing we need to make all work, look closely at the second gadgets
+We just need one more little thing to make all work, look closely at the second gadgets
 
 ![alt text](images/second_gdt.png)
 
@@ -105,8 +106,9 @@ after the call instruction we have three instruction
 ```
 basically it's a loop, and to exit from that and go over we need to make rbx=rbp, then with the first gadget we need to set ebx=0 and rbp=1.
 <br>
-That was the hard part the rest is much ez now.
+Now that we are able to leak we just need restart execution to repeat the buffer-overflow again and this time (after libc version evaluation) we can overwrite the ret address with one-gadget to gain the shell.
 <br>
-Just restart execution to repeat the buffer-overflow again and this time (after libc version evaluation) we can overwrite the ret address with one-gadget to gain the shell.
-<br>
+Getting the flag :)
+![alt text](images/flag.png)
+
 You can check the full <a href="./x.py">exploit</a> here.
