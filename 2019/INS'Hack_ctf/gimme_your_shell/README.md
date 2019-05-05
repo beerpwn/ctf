@@ -93,7 +93,7 @@ With the first one we can basically get control over ebx, rbp, r12, r13, r14, r1
 Then we can use the second gadget that end with a call instruction.<br>
 Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some GOT address and then call puts@GOT.
 The second gadget make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget in this way, when we land on the second gadget, the contents of r13 will be placed into rdi.
-I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and i can do that with the first gadget.
+I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and again i can do that with the first gadget.
 We just need one more little thing to make all work, look closely at the second gadgets
 
 ![alt text](images/second_gdt.png)
