@@ -27,11 +27,19 @@ Let's verify this:
 Segfault!
 Let's also check for the protection on the binary
 ```
-$ checksec
+$ checksec ./weak
 Canary                        : No
 NX                            : No
 PIE                           : No
 Fortify                       : No
 RelRO                         : No
 ```
-Ok so what i did now was start to find some gadgets.
+As we can see the binary has no protection at all. So potentially we can also inject some shellcode into the stack/heap and jump on it, but instead of this i managed to do full ROP on this.
+So what i did now was start to find some gadgets.
+```
+$ ROPgadget --binary ./weak --depth 50
+```
+the first gadget that i pick for this challenge is:
+```
+0x0000000000400637 : mov ebx, dword ptr [rsp + 8] ; mov rbp, qword ptr [rsp + 0x10] ; mov r12, qword ptr [rsp + 0x18] ; mov r13, qword ptr [rsp + 0x20] ; mov r14, qword ptr [rsp + 0x28] ; mov r15, qword ptr [rsp + 0x30] ; add rsp, 0x38 ; ret
+```
