@@ -19,9 +19,19 @@ As we can see from the man page the gets(*s) function will read until \n or EOF,
 ![alt text](images/man_gets.png)
 
 Reading the vuln function we can see that the argument for the gets function will be a variable located into the stack.
-So what we can expect from this is a stack-buffer overflow.
+So what we expect from this is a stack-buffer overflow.
 Let's verify this:
 
 ![alt text](images/segfault.png)
 
+Segfault!
+Let's also check for the protection on the binary
+```
+$ checksec
+Canary                        : No
+NX                            : No
+PIE                           : No
+Fortify                       : No
+RelRO                         : No
+```
 Ok so what i did now was start to find some gadgets.
