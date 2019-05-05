@@ -88,8 +88,8 @@ and this is the second one:
 ```
 0x0000000000400620 : mov rdx, r15 ; mov rsi, r14 ; mov edi, r13d ; call qword ptr [r12 + rbx*8]
 ```
-with the first one we can basically get control over ebx, rbp, r12, r13, r14, r15 by writing double words into the stack at the correct offsett.
-Then we can use the second gadget that end with a call.
+With the first one we can basically get control over ebx, rbp, r12, r13, r14, r15 by writing double words into the stack at the correct offsett.<br>
+Then we can use the second gadget that end with a call instruction.<br>
 Since for now i just want to leak some libc address i'm just interesting on controlling rdi register with some got address and the call puts@GOT.
 The second gadgets make a 'mov edi, r13d' then we need to place leak-addr@GOT into r13 with the first gadget.
 I also need to make a call on puts() with the second gadget, then i need to set rbx=0 and r12=puts@GOT, and i can do that with the first gadget.
