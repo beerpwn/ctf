@@ -4,7 +4,7 @@
 ## gimme-your-shell PWN challnge
 
 This is not the intended solution for this challenge since i used ROP to solve it.
-We have a 64-bit binary and the libc of the remote server is NOT provided.
+We have a 64-bit <a href="./weak">binary</a> and the libc of the remote server is NOT provided.
 Let's start with a little bit of reverse on the binary.
 As we can see from the image below the main() function will call the vuln() function.
 
@@ -104,7 +104,7 @@ after the call instruction we have three instruction
 0000000000400631         cmp        rbx, rbp
 0000000000400634         jne        loc_400620
 ```
-basically it's a loop, and to exit from that and go over we need to make rbx=rbp, then with the first gadget we need to set ebx=0 and rbp=1.
+basically it's a loop. To exit from that loop and go over we need to make rbx=rbp, then with the first gadget we need to set ebx=0 and rbp=1.
 <br>
 Now that we are able to leak we just need restart execution to repeat the buffer-overflow again and this time (after <a href="https://libc.blukat.me/">libc version evaluation</a>) we can overwrite the ret address with one-gadget to gain the shell.
 <br>
