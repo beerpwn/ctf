@@ -104,7 +104,7 @@ after the call instruction we have three instruction
 0000000000400631         cmp        rbx, rbp
 0000000000400634         jne        loc_400620
 ```
-basically it's a loop. To exit from that loop and go over we need to make rbx=rbp, then with the first gadget we need to set ebx=0 and rbp=1.
+basically it's a loop. To exit from that loop and go over we need to make `rbx=rbp`, then with the first gadget we need to set `ebx=0` and `rbp=1`.
 <br>
 Now that we are able to leak we just need restart execution to repeat the buffer-overflow again and this time (after <a href="https://libc.blukat.me/">libc version evaluation</a>) we can overwrite the ret address with one-gadget to gain the shell.
 <br>
@@ -115,4 +115,5 @@ Getting the flag :)
 You can check the full <a href="./x.py">exploit</a> here.
 
 After the CTF, speaking with the admin i discovered that the intended way for this one was simply to jump on a shellcode since the stack was executable. I didn't manage to do it that way cause i assumed the ASLR was enabled on the remote system, but i was WRONG. Actually the ASLR was disabled and then we can predict where the shellcode will be placed. So i did a mistake but i managed to solve it in another way, and sinceraly I'm happy of that just because I could learn more doing it.
+<br>
 Cheers, p4w ;)
