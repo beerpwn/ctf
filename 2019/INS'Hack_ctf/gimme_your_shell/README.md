@@ -113,3 +113,6 @@ Getting the flag :)
 ![alt text](images/flag.png)
 
 You can check the full <a href="./x.py">exploit</a> here.
+
+After the CTF, speaking with the admin i discovered that the intended way for this one was simply to jump on a shellcode since the stack was executable. I didn't manage to do it that way cause i assumed the ASLR was enabled on the remote system, but i was WRONG. Actually the ASLR was disabled and then we can predict where the shellcode will be placed. So i did a mistake but i managed to solve it in another way, and sinceraly I'm happy of that just because I could learn more doing it.
+Cheers, p4w ;)
