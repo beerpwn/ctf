@@ -43,7 +43,7 @@ $ ROPgadget --binary ./weak --depth 40
 ```
 
 ### The problem
-As we can see from the dump there are NOT simple gadget like 'pop rdi' to control registers.
+As we can see from the dump there are NOT simple gadget like `pop rdi` to control registers.
 ```
 $ ROPgadget --binary ./weak --depth 40 |grep pop|grep ret
 0x0000000000400519 : add al, 0x20 ; add byte ptr [rcx], al ; add rsp, 8 ; pop rbx ; pop rbp ; ret
