@@ -37,4 +37,4 @@ With this payload we can grab the admin-cookie and get the flag:
 
 ![Image index](./server_log.png)
 
-flag:
+flag: flag{csp_will_solve_EVERYTHING}
