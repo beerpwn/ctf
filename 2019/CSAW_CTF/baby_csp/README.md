@@ -9,12 +9,6 @@ Sufing to the index page we have this:
 
 ![Image desc](./index.png)
 
-## Understanding the CSP
-The directive ``````
-So the CSP permit to use the script that are coming from *google.com
-=======
-![Image index](./index.png)
-
 The input that we can pass is totally NOT filtered and safe from XSS.
 
 ## Understanding the CSP
@@ -29,8 +23,7 @@ since we can't control directily any file contents from the same domain, then we
 
 ## Fire the XSS
 Now with this payload
-`<script src='//cse.google.com/api/007627024705277327428:r3vs7b0fcli/popularqueryjs?callback=alert()'></script>
-`
+`<script src='//cse.google.com/api/007627024705277327428:r3vs7b0fcli/popularqueryjs?callback=alert()'></script>`
 we will be able to pop up an alert bypassing the CSP.
 The only problem that I had to solve now is that some character are not usable with this JSON endpoint as we can see here:
 ![Image index](./banned_char_enum.png)
