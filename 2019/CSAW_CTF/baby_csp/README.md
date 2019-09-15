@@ -25,8 +25,10 @@ since we can't control directily any file contents from the same domain, then we
 Now with this payload
 `<script src='//cse.google.com/api/007627024705277327428:r3vs7b0fcli/popularqueryjs?callback=alert()'></script>`
 we will be able to pop up an alert bypassing the CSP.
-The only problem that I had to solve now is that some character are not usable with this JSON endpoint as we can see here:
+The only problem that I had to solve now is that some character are not usable with this JSONP endpoint as we can see here:
+
 ![Image index](./banned_char_enum.png)
+
 This `? / ,` and probably more others are not allowed to construct the callback function.
 So I comed up with this payload to avoid the bad char:
 <code>
