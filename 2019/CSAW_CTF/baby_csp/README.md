@@ -5,7 +5,7 @@
 ![Image desc](./description.png)
 
 As the descrption/title say we will probably need to bypass CSP to trigger some XSS in order to steal the admin cookies.
-Sufing to the index page we have this:
+Surfing to the index page we have this:
 
 ![Image desc](./index.png)
 
