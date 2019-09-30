@@ -5,7 +5,7 @@
 ![Image desc](vuln_param.png)
 First thing we have to bypass the firwall that blocks the `_` character. This character is used by a vulnerable query as GET parameter name. And here the first trick is based on the bahavior of php that automatically converts the `.` into `_`, so we can use this feature to bypass the restriction.
 The GET parameter is vulnerable to SQL-injection. The main problem here is that the output don't change in any way if the query match for something or not.
-The first idea that I had is to leak the database using time-based technique, but unfortunately the firewall block us. I start to enumerate the firewall rules and comes out that `sleep` and `bench` words were blacklisted, then no time delay for us. Also other words match the firewall rules eg `like` `if`...
+The first idea that I had is to leak the database using time-based technique, but unfortunately the firewall block us. I start to enumerate the firewall rules and comes out that `sleep` and `bench` words were blacklisted, then no time delay for us. Also other words match the firewall rules eg `like`,`if` etc...
 After a bit of try and errors I noticed that if the query has some syntax error, the server replies with a blank response that is different from the normal one. Then server error means blank response.
 So the idea that I had was:
 what happens if I control this behavior with a query in order to trigger a boolean condition to extract information?
