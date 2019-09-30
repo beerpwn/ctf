@@ -1,4 +1,4 @@
-# WRITEUP Seek You EI (SQLi)
+# WRITEUP Seek You EI (Blind-SQLi)
 
 ## __Author:__ p4w @ beerpwn team
 ![Image desc](challenge_desc.png)
