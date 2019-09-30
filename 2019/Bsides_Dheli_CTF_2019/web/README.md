@@ -28,4 +28,8 @@ And here you can see the output of the script extracting the admin pwd:
 
 ![Image of exploit](exploit_output.png)
 
+Oh and obviusly flag time ;
+
+![Image of exploit](flag_time.png)
+
 Cheers, p4w!
