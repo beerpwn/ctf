@@ -13,7 +13,7 @@ what happens if I control this behavior with a query in order to trigger a boole
 The question that I had to answer now was "how can I force a server error with a query?". Well, after some time my brain comes out with an answer: using some "heavy" operation number to cause a MySQL server side error!
 To do that the `pow()` function seems to be a good candidate. Behaving that the flow was correct I builded a payload to prove that.
 ```(SQL)
-asd' pow(99999999, pow(99999999, pw regexp '^')) --
+asd' OR pow(99999999, pow(99999999, pw regexp '^')) --
 ```
 This payload will produce an error when the regex match because the regexp return 1, then the dbms has to calc `99999999^(99999999^1)` and this result should be too big; instead when the regexp fail the match then it return 0 so the dbms calc should be `99999999^(99999999^0) = 99999999^1`.
 Regex match generate blank resp:
