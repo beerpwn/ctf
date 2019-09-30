@@ -15,12 +15,13 @@ To do that the `pow()` function seems to be a good candidate. Behaving that the 
 asd' pow(99999999, pow(99999999, pw regexp '^')) --
 ```
 This payload will produce an error when the regex match because the regexp return 1, then the dbms has to calc `99999999^(99999999^1)` and this result should be too big; insetad when the regexp fail the match return 0 so the dbms calc should be `99999999^(99999999^0) = 99999999^1`.
-![Image poc](sqli_poc_error.png")
+![Image poc](sqli_poc_error.png)
 <br>
 ![Image poc](sqli_poc_not_error.png)
 <br>
 As you can see from the image above the techinique works like a charm so we have the control over the server error and we can build our blind exploit from this behavior.
 <a href="./sqli_exploit.py">Here</a> you can find a full exploit that I written during the CTF.
 And here you can see the output of the script extracting the admin pwd
+<br>
 ![Image of exploit](exploit_output.png)
 Cheers, p4w!
