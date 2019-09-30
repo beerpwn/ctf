@@ -3,6 +3,7 @@
 ## __Author:__ p4w @ beerpwn team
 ![Image desc](challenge_desc.png)
 ![Image desc](vuln_param.png)
+<br>
 First thing we have to bypass the firwall that blocks the `_` character. This character is used by a vulnerable query as GET parameter name. And here the first trick is based on the bahavior of php that automatically converts the `.` into `_`, so we can use this feature to bypass the restriction.
 The GET parameter is vulnerable to SQL-injection. The main problem here is that the output don't change in any way if the query match for something or not.
 The first idea that I had is to leak the database using time-based technique, but unfortunately the firewall block us. I start to enumerate the firewall rules and comes out that `sleep` and `bench` words were blacklisted, then no time delay for us. Also other words match the firewall rules eg `like`,`if` etc...
@@ -18,7 +19,7 @@ This payload will produce an error when the regex match because the regexp retur
 Regex match generate blank resp:
 ![Image poc](sqli_poc_error.png)
 <br>
-Regex NOT match generate blank resp:
+Regex NOT match generate resp with contents:
 ![Image poc](sqli_poc_not_error.png)
 <br>
 As you can see from the image above the techinique works like a charm so we have the control over the server error and we can build our blind exploit from this behavior.
