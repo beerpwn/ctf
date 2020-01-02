@@ -14,4 +14,4 @@ Official site: [beerpwn.it](http://beerpwn.it/)
 
 [__vl4dmole__](./)
 
-<a href="javascript:alert()">asd</a>
+<a href="http://javascript:alert()">asd</a>
