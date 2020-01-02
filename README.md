@@ -13,5 +13,3 @@ Official site: [beerpwn.it](http://beerpwn.it/)
 [__sk4__](https://twitter.com/sk4pwn "sk4")
 
 [__vl4dmole__](./)
-
-<a href="http://javascript:alert()">asd</a>
