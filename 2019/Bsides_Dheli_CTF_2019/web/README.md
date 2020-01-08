@@ -7,7 +7,7 @@
 First thing I had to do was to bypass the firwall that blocks the usage of `_` character. As we noticed from the image above, this character is used by a vulnerable query as GET parameter name. The first trick is based on a bahavior of php that automatically converts the `.` into `_`, so we can use this behavior to bypass the restriction.
 The GET parameter is vulnerable to SQL-injection. The main problem here is that the output don't change in any way if the query match for something or not.
 The first idea that I had is to leak the database using time-based technique, but unfortunately the firewall block us. I start to enumerate the firewall rules and comes out that `sleep` and `bench` words were blacklisted, then no time delay for us. Also other words match the firewall rules eg `like`,`if` etc...
-After a bit of try and errors I noticed that if the query has some syntax error, the server replies with a blank response that is different from the normal one. Then server error means blank response.
+After a bit of try and errors I noticed that if the query has some syntax error, the server replies with a blank response that is different from the normal one. Then __server error__ means __blank response__.
 So the idea that I had was:
 what if I control this behavior with a query in order to trigger a boolean condition to extract information?
 The question that I had to answer now was "how can I force a server error with a query?". Well, after some time my brain comes out with an answer: using some "heavy" operation number to cause a MySQL server side error!
