@@ -61,7 +61,7 @@ Disassemble of read_int():
 
 The first call to `read_int()` read our input using `__isoc99_scanf()` and the rexult got stored in `eax` (0x004007e0), after that the contents of `eax` got transferred into `ebx` (0x0040081c).
 The vulnerable line reside in 0x00400835 of `main()` func, as we can see it does a `call qword [r12 + rbx*8]` and we can control the `rbx` register with our input (our input is used as an offsett to a function pointer).
-The sencond input we can pass to the program, will be the argument to the func. pointe look at instruction addr. 0x00400833.<br>
+The sencond input we can pass to the program, will be the argument to the func. pointer (look at instruction addr. 0x00400833).<br>
 How we can abuse this behavior?<br>
 Passing an offsett (our first input) and trick the programm to make a call instruction on __puts@GOT__ to leak libc address, then use same method to call ____isoc99_scanf@GOT__ with a `"%s"` argument to gain stack buffer overflow. From there we can just use __ROP__ to gain a shell.<br>
 The exploit is available <a href='./x.py'>here</a>
