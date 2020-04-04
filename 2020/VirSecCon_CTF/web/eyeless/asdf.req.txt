@@ -1,0 +1,15 @@
+POST / HTTP/1.1
+Host: jh2i.com:50011
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 58
+Origin: http://jh2i.com:50011
+Connection: close
+Referer: http://jh2i.com:50011/
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ.qfSqP1u-gAhG6r8Vfb31Fi5WkjYCxjRKhFEcLCde8O0
+Upgrade-Insecure-Requests: 1
+
+username=tamper&password=asdf
