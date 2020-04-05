@@ -3,7 +3,7 @@
 * we have a stack buffer overflow because of gets()
 * calculate the libc base and evaluate the remote libc using https://libc.blukat.me/
 ![img ](./libc_enum.png)
-* use the buf-overflow to evrwrite RIP with one_gadgets, also we fiull the stack with `\x00` to be sure the pne_gadget work ;)
+* use the buf-overflow to evrwrite RIP with one_gadgets, also we full the stack with `\x00` to be sure the one_gadget work ;)
 * exploit here <a href=x.py>x.py</a>
 ```
   $ python x.py
