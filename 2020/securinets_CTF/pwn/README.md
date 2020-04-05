@@ -1,3 +1,5 @@
+### Author: p4w
+
 * binary analysis:
 ```
   $ file ./main
