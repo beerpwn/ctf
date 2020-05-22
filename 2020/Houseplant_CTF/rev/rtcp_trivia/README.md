@@ -39,7 +39,7 @@ The main activity was a form login with an input text for the username and a log
 
 I have tried to insert an username and press the login button and a websocket request was sent to a server, how I've seen in my BurpSuite proxy:
 
-![First request](img/websocket1.png "First request")
+![First request](img/websocket1.PNG "First request")
 
 After the login there was the LoggedIn activity with only a *play* button:
 
@@ -47,7 +47,7 @@ After the login there was the LoggedIn activity with only a *play* button:
 
 Pressing the button, a websocket request happened with a reply by the server:
 
-![Second request](img/websocket2.png "Second request")
+![Second request](img/websocket2.PNG "Second request")
 
 In the response, there was the first question that I had to answer correctly, but it was all encrypted, then I had to reverse the code of the apk for see how the answer was encrypted and decrypted.
 
