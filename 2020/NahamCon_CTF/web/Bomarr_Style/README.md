@@ -3,7 +3,7 @@
 #### Author: p4w
 
 ### TL;DR
-In this challenge we have to exploit a __kid path traversal__ vulnerability in order to be able to modify and sign our jwt-token and gain RCE via pickle serialization.
+In this challenge we have to exploit a __kid path traversal__ vulnerability in order to be able to modify and sign our jwt-token and gain RCE via __pickle serialization__.
 
 ### Token analysis
 * The application let us create a user and login.
