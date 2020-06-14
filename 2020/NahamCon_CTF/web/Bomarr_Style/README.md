@@ -1,9 +1,8 @@
-
 ## B'omarr Style, WEB 200 pti
 #### Author: p4w
 
 ### TL;DR
-In this challenge we have to exploit a __kid path traversal__ vulnerability in order to be able to modify and sign our jwt-token and gain RCE via __pickle serialization__.
+In this challenge we have to exploit a __kid path traversal__ vulnerability in order to be able to modify and sign our jwt-token and gain RCE via pickle serialization.
 
 ### Token analysis
 * The application let us create a user and login.
@@ -23,11 +22,13 @@ In this challenge we have to exploit a __kid path traversal__ vulnerability in o
 
 ![alt login](./screen/burp_decode.png)
 
+* Seems reasonable to search for python related stuff since the response coming from the server contains the header `Server: Werkzeug/1.0.1 Python/3.6.9`, that tell us which back-end is used.
+
 * If we search for `python serialized data example`, we can found some resource and notice that the _pattern_ of a __serialized python object__ has the same _pattern_ of our jwt-payload, then we can assume that this is the case.
 
 ### Exploit
 
-* The general idea is to tamper the `kid` field in order to force the web-application to __verify the signature__ using a file with a __well known contents__, in this way we have the control of the key used by the web-application. If we have the ability to craft the cookie, then we can gain __RCE__ by modify the payload part with our __malicious python object__.
+* The general idea is to tamper the `kid` field in order to force the web-application to __verify the signature__ using a file with a __well known contents__, in this way we have the control over the key used by the web-application. If we have the ability to craft the cookie, then we can gain __RCE__ by modify the payload part with our __malicious python object__.
 
 * To do that I build a python script. In <a href=./x.py>this</a> script you can see that I picked up the `/proc/sys/kernel/randomize_va_space` file which should be present on every modern linux systems and his contents (by default) is `2\n`
 
