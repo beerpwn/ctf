@@ -17,7 +17,7 @@ In this challenge we have to exploit a __kid path traversal__ vulnerability in o
 
 ![alt login](./screen/login_2.png)
 
-* That is tricky since usually the __payload__ part of a token contains a json, instead in this case seems it contains some unreadable character and for sure is not a valid json. Anyway we can still recognize some words inside it, for example the username used to login and the role.
+* That is tricky since usually the __payload__ part of a token contains a __json__, instead in this case seems it contains some unreadable characters and for sure is not a valid json. Anyway we can still recognize some words inside it, for example the username used to login and the role.
 
 * Let's see which bytes we have in this payload part:
 
