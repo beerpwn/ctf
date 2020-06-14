@@ -11,7 +11,7 @@ In this challenge we have to exploit a __kid path traversal__ vulnerability in o
 ![alt login](./screen/login.png)
 
 * As we can see the `alg` field tell us that the __algorithm__ used to __sign__ the cookie is `HS256` (stand for hash-sha256)
-* The `kid` parameter, which the purpose should be to identify a specific __key__ in a set of __keys__, seems to point to a file named `secret.txt`
+* The `kid` (key identifier) parameter, which the purpose should be to identify a specific __key__ in a set of __keys__, seems to point to a file named `secret.txt`
 * Analyze of the payload part of the token
 
 ![alt login](./screen/login_2.png)
