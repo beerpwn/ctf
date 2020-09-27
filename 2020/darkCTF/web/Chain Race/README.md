@@ -51,7 +51,7 @@ For the first and the second one we can just read the php-docs for the function 
 
 Looking at return value of this function, to bypass the check we just need to pass a longer string then `admin` like `adminA`
 
-![img bypass_1](screen/bypass_1.png)
+![img bypass_1](screen/bypass_1.PNG)
 
 ![img strcasecmp](screen/strcasecmp.png)
 
