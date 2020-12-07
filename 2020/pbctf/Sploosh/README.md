@@ -12,6 +12,7 @@ This challenge is about exploiting an __SSRF__ vulnerability along with __Splash
 ## Solution
 Once connected to the challenge, the index page show a link where it is possible to download the source code.
 Here it follow the docker configuration file for the challenge:
+
 ![img desc](screen/docker_compose.png)
 
 The application is pretty simple, basically we have 3 file: __index.php__, __flag.php__ and __api.php__.
