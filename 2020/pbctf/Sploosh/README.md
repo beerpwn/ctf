@@ -44,7 +44,7 @@ With this payload it is possible to force the the application to make a request 
 ![img desc](screen/webhook_req.png)
 ![img desc](screen/webhook.png)
 
-Works fine, at this point I know that I was able to to fully control a request to the splash endpoint along with any parameter I want to use. The first idea was to use the `lua_source` parameter to inject some lua script to leak the flag. I tried that solution, unfortunately I fail so I start to read more documentation.
+Works fine, at this point I knew that I was able to fully control a request to the splash endpoint along with any parameter I want to use. The first idea was to use the `lua_source` parameter to inject some lua script to leak the flag. I tried that solution, unfortunately I fail so I start to read more documentation.
 The __Splash__ service have many endpoints that can be used to fetch pages such as `/render.jpeg`.
 
 ![img desc](screen/render_jpeg_docs.png)
