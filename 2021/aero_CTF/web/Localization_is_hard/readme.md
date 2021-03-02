@@ -63,7 +63,7 @@ At this point I start to read the __thymeleaf__ [documentation](https://www.thym
 
 ![alt img](javadoc.PNG)
 
-![alt img](set-header.PNG)
+![alt img](set-header.png)
 
 Now that we have the ability to modify the response, I simply played a bit with the Java-doc to build a payload that reads the output of the command and save it into the crafted header.
 The final payload:
