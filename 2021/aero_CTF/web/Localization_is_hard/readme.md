@@ -76,5 +76,5 @@ This payload will execute the `ls` command, read the first line, url-encode it a
 
 ![alt img](script-run.PNG)
 
-That's all folk, I think that was really an interesting challenge!\
+That's all folks, I think that was really an interesting challenge!\
 Cheers, [p4w](https://twitter.com/p4w16) =)
