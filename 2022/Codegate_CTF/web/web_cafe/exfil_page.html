@@ -1,0 +1,61 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon">
+    
+    <title> cafe </title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/main.css?v=">
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body><nav class="navbar navbar-expand-md navbar-dark" style="background-color: #292626; heigth:18%;">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <p style=" margin-top: -5px;">CAFE</p>
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+            <ul class="navbar-nav" style="font-size: 18px;">
+                                    <li class="nav-item"><a class="nav-link" href="/write">Write</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                            </ul>
+        </div>
+    </div>
+</nav>
+<section>
+    <div class="py-3">
+        <div class="container">       
+          <p>Search result: codegate2022{ </p>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">Writer</th>
+                <th scope="col">Views</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr onclick=location.href="/read?no=1"><th scope="row">1</th><td>flag</td><td>code..</td><td>admin</td><td>551</td></tr><tr onclick=location.href="/read?no=1069"><th scope="row">1069</th><td>flag</td><td>code..</td><td>admin</td><td>51</td></tr><tr onclick=location.href="/read?no=1391"><th scope="row">1391</th><td>flag</td><td>code..</td><td>admin</td><td>30</td></tr>            </tbody>
+          </table>
+        </div>
+    </div>
+</section>
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/axios.min.js"></script>
+</body>
+</html> 
