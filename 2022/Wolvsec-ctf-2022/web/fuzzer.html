@@ -1,0 +1,13 @@
+<html>
+<body>
+  <div id="fuzzme">fuzzing XSS</div>
+  <script>
+  var i;
+  for (i = 0; i <= 255; i++) {
+    var payload = "<img#FUZZ#src=0 onerror=\'document.getElementById(\"result\").innerHTML+=\"<pre>" + String(i) + "</pre>\"\'>";
+    document.getElementById("fuzzme").innerHTML = payload.replaceAll("#FUZZ#", String.fromCharCode(i));
+  }
+  </script>
+  <div id="result"></div>
+</body>
+</html>
